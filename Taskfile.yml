@@ -1,7 +1,7 @@
 version: '3'
 
 env:
-  VERSION: v0.1.0
+  VERSION: v0.1.2
   IMAGE_NAME: darkwind8/fl-server-vanilla
 
 tasks:
