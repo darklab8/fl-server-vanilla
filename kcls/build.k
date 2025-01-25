@@ -24,7 +24,7 @@ build_wf: gw.Workflow =  {
                 ghc.GetVersionFromTag
                 docker.DockerLogin{}
                 cf.NewCheckoutFreelancer(cf.CheckoutArgs {
-                    freelancer_mod = cf._mod_vanilla
+                    freelancer_mod = cf._mod_vanilla_full
                     freelancer_folder = _freelancer_folder
                 })
                 docker.Build(docker.BuildOpts {

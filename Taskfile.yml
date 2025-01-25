@@ -20,7 +20,8 @@ tasks:
 
   run:
     cmds:
-      - docker-stop
+      - docker kill --signal=SIGKILL $(docker ps -q) | true
+      - docker rm -f $(docker ps -a -q) | true
       - task: init
       - >
         docker run
