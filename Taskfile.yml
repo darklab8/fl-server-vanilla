@@ -1,0 +1,36 @@
+version: '3'
+
+env:
+  VERSION: v0.1.0
+  IMAGE_NAME: darkwind8/fl-server-vanilla
+
+tasks:
+  build:
+    cmds:
+      - >
+        docker build --tag ${IMAGE_NAME}:${VERSION} .
+
+  init:
+    cmds:
+      - mkdir data | true
+      - chmod a+rw data
+      - cp FLServer.cfg data
+    status:
+      - test -f data/FLServer.cfg
+
+  run:
+    cmds:
+      - docker-stop
+      - task: init
+      - >
+        docker run
+        -v $(pwd)/data:"/home/wineuser/.wine/drive_c/users/wineuser/Documents/My Games/Freelancer/Accts/MultiPlayer"
+        -it -p 2302/udp ${IMAGE_NAME}:${VERSION}
+
+  push:
+    cmds:
+      - docker push ${IMAGE_NAME}:${VERSION}
+
+  kcl:build:
+    cmds:
+      - kcl kcls/build.k
