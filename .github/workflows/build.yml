@@ -24,7 +24,7 @@ jobs:
       with:
         freelancer-mod: vanilla-full
         freelancer-folder: ${{ github.workspace }}/Freelancer
-        ssh-key-base64-vanilla: ${{ secrets.ID_RSA_FILES_FREELANCER_VANILLA }}
+        ssh-key-base64-vanilla-full: ${{ secrets.ID_RSA_FILES_FREELANCER_VANILLA_FULL }}
     - name: Build image darkwind8/fl-server-vanilla
       run: |
         set -ex
